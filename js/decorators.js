@@ -28,13 +28,13 @@
           return function() {
             var args;
             args = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+            console.log("1: ", args);
+            console.log.apply(console, ["2: "].concat(slice.call(args)));
             if (typeof pre === "function") {
               pre.apply(null, [key, value].concat(slice.call(args)));
             }
-            if (value != null) {
-              if (typeof value.call === "function") {
-                value.call.apply(value, args);
-              }
+            if (typeof value === "function") {
+              value.apply(null, args);
             }
             if (typeof post === "function") {
               post.apply(null, [key, value].concat(slice.call(args)));

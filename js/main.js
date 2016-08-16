@@ -34,7 +34,16 @@
         }
       }
     });
-    return document.windowManager.createNewWindow();
+    document.windowManager.createNewWindow({
+      title: 'hello',
+      x: 300,
+      y: 300
+    });
+    return document.windowManager.createNewWindow({
+      title: 'bye',
+      x: 500,
+      y: 300
+    });
   });
 
 }).call(this);

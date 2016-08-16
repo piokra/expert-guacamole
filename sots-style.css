@@ -54,17 +54,8 @@
 {
   top: 100px;
 }
-.popup-bar-button-close
-{
-  right: 5px;
-}
 
-.popup-bar-button-toggle
+.hidden
 {
-  right: 70px;
-}
-
-.popup-bar-button-minimize
-{
-  right: 135px;
+  display: none;
 }

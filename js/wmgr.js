@@ -7,6 +7,9 @@
 
   WindowManager = (function() {
     function WindowManager(args) {
+      this.toggleSize = bind(this.toggleSize, this);
+      this.toggleShow = bind(this.toggleShow, this);
+      this.click = bind(this.click, this);
       this.createNewWindow = bind(this.createNewWindow, this);
       var ref;
       this.parent = args.parent, this.buttonSize = (ref = args.buttonSize) != null ? ref : 80;
@@ -19,10 +22,31 @@
         args = {};
       }
       args.parent = this;
+      args.zindex = this.windows.length + 1;
       ret = new Window(args);
       console.log("this:", this);
       this.parent.appendChild(ret.dom);
       return this.windows.push(ret);
+    };
+
+    WindowManager.prototype.click = function(iwin) {
+      var i, len, ref, win;
+      ref = this.windows;
+      for (i = 0, len = ref.length; i < len; i++) {
+        win = ref[i];
+        if (iwin !== win) {
+          win.changeZIndex(-1);
+        }
+      }
+      return iwin.changeZIndex(1);
+    };
+
+    WindowManager.prototype.toggleShow = function(iwin) {
+      return console.log("toggleShow: not implemented");
+    };
+
+    WindowManager.prototype.toggleSize = function(iwin) {
+      return console.log("toggleSize: not implemented");
     };
 
     return WindowManager;

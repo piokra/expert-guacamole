@@ -1,3 +1,3 @@
 @echo off
 
-browserify js\main.js -o bundle.js
+watchify js\main.js -v -o bundle.js
